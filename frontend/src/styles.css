@@ -1,0 +1,77 @@
+:root {
+  --primary-green: #27ae60;
+  --primary-dark: #219150;
+  --dark-blue: #1e272e;
+  --light-bg: #f8fbfa;
+  --danger: #e74c3c;
+  --warning: #f1c40f;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--light-bg);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Cartes Produits ParaSoins */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #edf2f7;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border-color: var(--primary-green);
+}
+
+.add-to-cart-small {
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  width: 100%;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
+}
+
+.add-to-cart-small:hover {
+  background: var(--primary-dark);
+}
+
+.price-tag {
+  font-weight: 700;
+  color: var(--primary-green);
+  font-size: 19px;
+  margin: 12px 0;
+}
