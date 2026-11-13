@@ -17,6 +17,7 @@ public class DataInitializer implements CommandLineRunner {
     private final SousCategorieRepository sousCategorieRepository;
     private final MarqueRepository marqueRepository;
     private final ProduitRepository produitRepository;
+    private final CommandeRepository commandeRepository;
     private final PasswordEncoder passwordEncoder;
 
     public DataInitializer(UserRepository userRepository,
@@ -24,12 +25,14 @@ public class DataInitializer implements CommandLineRunner {
                            SousCategorieRepository sousCategorieRepository,
                            MarqueRepository marqueRepository,
                            ProduitRepository produitRepository,
+                           CommandeRepository commandeRepository,
                            PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.categorieRepository = categorieRepository;
         this.sousCategorieRepository = sousCategorieRepository;
         this.marqueRepository = marqueRepository;
         this.produitRepository = produitRepository;
+        this.commandeRepository = commandeRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -252,5 +255,31 @@ public class DataInitializer implements CommandLineRunner {
 
         produitRepository.saveAll(List.of(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20));
 
+        // 5. Commandes initiales de démonstration (Sprint 1 #6 & Sprint 2 #5/#9)
+        Commande cmd1 = new Commande();
+        cmd1.setClient(malik);
+        cmd1.setNomClient(malik.getNom());
+        cmd1.setTelephone(malik.getTelephone());
+        cmd1.setAdresse(malik.getAdresse());
+        cmd1.setModePaiement("PAIEMENT_LIVRAISON");
+        cmd1.setFraisLivraison(BigDecimal.ZERO);
+        cmd1.setTotalCommande(new BigDecimal("153.400"));
+        cmd1.setStatut("Livrée");
+        cmd1.getLignes().add(new LigneCommande(cmd1, p1, 1, p1.getPrix()));
+        cmd1.getLignes().add(new LigneCommande(cmd1, p2, 1, p2.getPrix()));
+
+        Commande cmd2 = new Commande();
+        cmd2.setClient(malik);
+        cmd2.setNomClient(malik.getNom());
+        cmd2.setTelephone(malik.getTelephone());
+        cmd2.setAdresse(malik.getAdresse());
+        cmd2.setModePaiement("PAIEMENT_LIVRAISON");
+        cmd2.setFraisLivraison(new BigDecimal("7.000"));
+        cmd2.setTotalCommande(new BigDecimal("88.900"));
+        cmd2.setStatut("En attente");
+        cmd2.getLignes().add(new LigneCommande(cmd2, p8, 1, p8.getPrix()));
+        cmd2.getLignes().add(new LigneCommande(cmd2, p4, 1, p4.getPrix()));
+
+        commandeRepository.saveAll(List.of(cmd1, cmd2));
     }
 }

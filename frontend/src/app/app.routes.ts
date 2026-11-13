@@ -6,6 +6,8 @@ import { ProduitDetailComponent } from './components/produit-detail/produit-deta
 import { LoginComponent } from './components/auth/login.component';
 import { InscriptionComponent } from './components/auth/inscription.component';
 import { MonCompteComponent } from './components/auth/mon-compte.component';
+import { PanierComponent } from './components/panier/panier.component';
+import { CommandeDetailsComponent } from './components/commande/commande-details.component';
 import { AdminLoginComponent } from './components/admin/admin-login.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard.component';
 import { authGuard, adminGuard } from './guards/auth.guard';
@@ -18,6 +20,8 @@ export const routes: Routes = [
   { path: 'connexion', component: LoginComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'mon-compte', component: MonCompteComponent, canActivate: [authGuard] },
+  { path: 'panier', component: PanierComponent },
+  { path: 'commande-details/:id', component: CommandeDetailsComponent, canActivate: [authGuard] },
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [adminGuard] },
   { path: '**', redirectTo: '' }
