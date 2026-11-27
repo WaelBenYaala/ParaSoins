@@ -1,0 +1,29 @@
+# Environment & Secrets (NEVER commit these)
+.env
+.env.local
+backend/.env
+frontend/.env
+frontend/.env.local
+**/application-local.properties
+**/application-local.yml
+
+# Java / Maven / Spring Boot
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+*.log
+
+# Node / React / Vite
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+
+# IDEs & OS
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
